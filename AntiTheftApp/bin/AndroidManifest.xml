@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.antitheftapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.PROCESS_INCOMING_CALLS" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.telephony" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/unnamed"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.antitheftapp.MainActivity"
+            android:label="@string/app_name" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.antitheftapp.SecondActivity"
+            android:label="@string/title_activity_second" >
+        </activity>
+
+        <service
+            android:name="service.SimChangeService"
+            android:enabled="true" >
+        </service>
+
+        <receiver android:name="receiver.SimChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+            </intent-filter>
+        </receiver>
+        
+        <receiver
+            android:name="receiver.SMSTrackerActivity"
+            android:enabled="true" >
+            <intent-filter android:priority="101" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+            <intent-filter android:priority="101" >
+                <action android:name="android.provider.Telephony.WAP_PUSH_RECEIVED" />
+
+                <data android:mimeType="application/vnd.wap.mms-message" />
+            </intent-filter>
+            <intent-filter android:priority="101" >
+                <action android:name="com.android.mms.transaction.MESSAGE_SENT" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver
+            android:name="receiver.CallReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="101" >
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+            <intent-filter android:priority="101" >
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="service.ActivateObserver"></service>
+        <service
+            android:name="service.CameraService"
+            android:label="true" >
+        </service>
+        <service
+            android:name="service.StatusUpdate"
+            android:label="true" >
+        </service>
+        <service
+            android:name="service.ServiceLoc"
+            android:label="true" >
+        </service>
+
+        <activity
+            android:name="com.example.antitheftapp.SimSync"
+            android:label="@string/title_activity_sim_sync" >
+        </activity>
+        <activity
+            android:name="com.example.antitheftapp.PrefSetting"
+            android:label="@string/title_activity_pref_setting" >
+        </activity>
+        <activity
+            android:name="com.example.antitheftapp.TestActivity"
+            android:label="@string/title_activity_test" >
+           
+        </activity>
+    </application>
+
+</manifest>

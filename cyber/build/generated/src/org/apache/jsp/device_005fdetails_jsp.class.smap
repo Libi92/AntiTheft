@@ -1,0 +1,14 @@
+SMAP
+device_005fdetails_jsp.java
+JSP
+*S JSP
+*F
++ 0 device_details.jsp
+device_details.jsp
+*L
+1,96:46
+97,13:143
+109,2:156
+111,3:158,3
+114,45:167
+*E

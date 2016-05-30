@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_start"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Start Tracking"/>
+
+    <item
+        android:id="@+id/action_stop"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Stop Tracking"/>
+    
+</menu>
